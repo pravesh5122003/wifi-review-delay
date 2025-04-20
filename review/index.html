@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f9f9f9, #dbefff);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto 20px;
+      padding: 0 15px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h1, h2 {
+      margin: 10px 0;
+    }
+
+    h2 {
+      animation: pulse 2s infinite;
+    }
+
+    .star-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px auto;
+      flex-wrap: wrap;
+    }
+
+    .star-container img {
+      width: 60px;
+      filter: grayscale(100%) brightness(0%);
+      transition: filter 0.4s ease, transform 0.3s ease;
+      z-index: 1;
+      cursor: pointer;
+      animation: bounceIn 0.8s ease-out;
+    }
+
+    .star-container:hover img:nth-child(1) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0s; }
+    .star-container:hover img:nth-child(2) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.1s; }
+    .star-container:hover img:nth-child(3) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.2s; }
+    .star-container:hover img:nth-child(4) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.3s; }
+    .star-container:hover img:nth-child(5) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.4s; }
+
+    .loader {
+      font-size: 1rem;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    #reviewLink {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.3rem;
+      color: green;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .continue-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #00c853;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.3s;
+      animation: popIn 0.8s ease-in-out;
+    }
+
+    .continue-link:hover {
+      background: #009624;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes pulse {
+      0% {opacity: 1;}
+      50% {opacity: 0.6;}
+      100% {opacity: 1;}
+    }
+
+    @keyframes bounceIn {
+      0% {transform: scale(0.3);}
+      50% {transform: scale(1.2);}
+      70% {transform: scale(0.9);}
+      100% {transform: scale(1);}
+    }
+
+    @keyframes popIn {
+      0% {transform: scale(0.8); opacity: 0;}
+      100% {transform: scale(1); opacity: 1;}
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 20px;
+      }
+
+      .star-container img {
+        width: 48px;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Please give us a review.. 🙏</h1>
+
+    <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank" class="star-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 1">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 3">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 4">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 5">
+    </a>
+
+    <h2>🔒 Checking if your review has been submitted. Please wait...</h2>
+    <div class="loader" id="loadingText">⏳ This may take up to 10 seconds...</div>
+
+    <div id="reviewLink">
+      🎉 <strong>You're verified!</strong><br><br>
+      <a href="https://forms.gle/DuXKShLk9P7iyfiw6" class="continue-link">👉 Tap here to continue</a>
+    </div>
+  </div>
+
+  <audio id="starSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5e4d92689.mp3" preload="auto"></audio>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("loadingText").style.display = "none";
+      document.getElementById("reviewLink").style.display = "block";
+
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 },
+        emojis: ["🎉", "✨", "⭐", "🍕"]
+      });
+    }, 60000);
+
+    const stars = document.querySelectorAll('.star-container img');
+    const starSound = document.getElementById('starSound');
+
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => {
+        starSound.currentTime = 0;
+        starSound.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

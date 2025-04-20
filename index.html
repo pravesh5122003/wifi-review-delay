@@ -137,7 +137,7 @@
 <body>
 
   <div class="container">
-    <h1>Please give us a review 🙏</h1>
+    <h1>Please give us a review.. 🙏</h1>
 
     <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank" class="star-container">
       <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 1">
@@ -147,8 +147,8 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 5">
     </a>
 
-    <h2>🔒 Verifying your review status...</h2>
-    <div class="loader" id="loadingText">⏳ This may take up to 40 seconds...</div>
+    <h2>🔒 Checking if your review has been submitted. Please wait...</h2>
+    <div class="loader" id="loadingText">⏳ This may take up to 10 seconds...</div>
 
     <div id="reviewLink">
       🎉 <strong>You're verified!</strong><br><br>
@@ -169,7 +169,7 @@
         origin: { y: 0.6 },
         emojis: ["🎉", "✨", "⭐", "🍕"]
       });
-    }, 40000);
+    }, 60000);
 
     const stars = document.querySelectorAll('.star-container img');
     const starSound = document.getElementById('starSound');

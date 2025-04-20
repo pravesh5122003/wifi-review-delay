@@ -5,10 +5,10 @@
   <title>Review Verification</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Google Fonts for Stylish Text -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
-  <!-- Confetti JS (🎉 celebration effect) -->
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
   <style>
@@ -16,45 +16,69 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #f9f9f9, #dbefff);
       margin: 0;
-      padding: 0;
+      padding: 40px 10px 10px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       min-height: 100vh;
-    }
-
-    .card {
-      background: white;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      flex-direction: column;
       text-align: center;
-      max-width: 90%;
-      width: 400px;
     }
 
-    .card h1 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
+    h1, h2 {
+      margin: 10px 0;
+      width: 100%;
     }
 
-    .card h2 {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      color: #555;
+    .star-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px auto;
     }
 
-    .card img {
-      max-width: 100%;
-      border-radius: 10px;
+    .star-container img {
+      width: 60px;
+      filter: grayscale(100%) brightness(0%);
+      transition: filter 0.4s ease, transform 0.3s ease;
+      z-index: 1;
       cursor: pointer;
-      margin: 20px 0;
+    }
+
+    .star-container:hover img:nth-child(1) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0s; }
+    .star-container:hover img:nth-child(2) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.1s; }
+    .star-container:hover img:nth-child(3) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.2s; }
+    .star-container:hover img:nth-child(4) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.3s; }
+    .star-container:hover img:nth-child(5) { filter: drop-shadow(0 0 5px gold); transform: scale(1.1); transition-delay: 0.4s; }
+
+    .star-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -75%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      transform: rotate(25deg);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .star-container:hover::before {
+      animation: shine 1s ease forwards;
+    }
+
+    @keyframes shine {
+      from { left: -75%; }
+      to { left: 100%; }
     }
 
     .loader {
-      font-size: 1.1rem;
+      font-size: 1rem;
+      color: #777;
       margin-top: 10px;
-      color: #888;
+      width: 100%;
     }
 
     #reviewLink {
@@ -63,6 +87,7 @@
       font-size: 1.3rem;
       color: green;
       animation: fadeIn 1.5s ease-in-out;
+      width: 100%;
     }
 
     .continue-link {
@@ -85,45 +110,77 @@
       from {opacity: 0; transform: scale(0.95);}
       to {opacity: 1; transform: scale(1);}
     }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 20px;
+        align-items: center;
+      }
+
+      .star-container img {
+        width: 50px;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      h2 {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Please give us a review 🙏</h1>
+  <h1>Please give us a review 🙏</h1>
 
-    <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank">
-      <img src="https://t4.ftcdn.net/jpg/03/03/93/89/360_F_303938955_0FovT0xyfoQ0PX77uGguDUwd7FS0Eom5.jpg" alt="Review Star">
-    </a>
+  <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank" class="star-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 1">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 2">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 3">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 4">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Five-pointed_star.svg" alt="Star 5">
+  </a>
 
-    <h2>🔒 Verifying your review status...</h2>
-    <div class="loader" id="loadingText">⏳ This may take up to 40 seconds...</div>
+  <h2>🔒 Verifying your review status...</h2>
+  <div class="loader" id="loadingText">⏳ This may take up to 40 seconds...</div>
 
-    <div id="reviewLink">
-      🎉 <strong>You're verified!</strong>  
-      <br><br>
-      <a href="https://forms.gle/DuXKShLk9P7iyfiw6" class="continue-link">
-        👉 Tap here to continue
-      </a>
-    </div>
+  <div id="reviewLink">
+    🎉 <strong>You're verified!</strong><br><br>
+    <a href="https://forms.gle/DuXKShLk9P7iyfiw6" class="continue-link">👉 Tap here to continue</a>
   </div>
+
+  <!-- Optional Sound -->
+  <audio id="starSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c5e4d92689.mp3" preload="auto"></audio>
 
   <script>
     setTimeout(() => {
       document.getElementById("loadingText").style.display = "none";
       document.getElementById("reviewLink").style.display = "block";
 
-      // 🎉 Trigger confetti
       confetti({
         particleCount: 200,
         spread: 100,
         origin: { y: 0.6 }
       });
+    }, 40000);
 
-    }, 40000); // 40 seconds
+    const stars = document.querySelectorAll('.star-container img');
+    const starSound = document.getElementById('starSound');
+
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', () => {
+        starSound.currentTime = 0;
+        starSound.play();
+      });
+    });
   </script>
 
 </body>
 </html>
+
+
+
 
 

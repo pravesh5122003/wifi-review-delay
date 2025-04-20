@@ -31,12 +31,6 @@
       text-align: center;
       max-width: 90%;
       width: 400px;
-      transform: perspective(600px) rotateX(1deg) rotateY(1deg);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: perspective(600px) rotateX(0deg) rotateY(0deg) scale(1.02);
     }
 
     .card h1 {
@@ -98,18 +92,12 @@
   <div class="card">
     <h1>Please give us a review 🙏</h1>
 
-    <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank" style="display: inline-block; text-decoration: none;">
-      <div style="display: flex; justify-content: center; gap: 8px;">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="Outline Star" width="40">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="Outline Star" width="40">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="Outline Star" width="40">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="Outline Star" width="40">
-        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828970.png" alt="Outline Star" width="40">
-      </div>
+    <a href="https://g.page/r/CWkX5Zy_0IyUEBM/review" target="_blank">
+      <img src="https://t4.ftcdn.net/jpg/03/03/93/89/360_F_303938955_0FovT0xyfoQ0PX77uGguDUwd7FS0Eom5.jpg" alt="Review Star">
     </a>
-    
+
     <h2>🔒 Verifying your review status...</h2>
-    <div class="loader" id="loadingText">⏳ This may take up to 10 seconds...</div>
+    <div class="loader" id="loadingText">⏳ This may take up to 40 seconds...</div>
 
     <div id="reviewLink">
       🎉 <strong>You're verified!</strong>  
@@ -132,9 +120,10 @@
         origin: { y: 0.6 }
       });
 
-    }, 60000); // 60 seconds
+    }, 40000); // 40 seconds
   </script>
 
 </body>
 </html>
+
 

@@ -1,5 +1,5 @@
 # wifi-review-delay
-# Frontend (React + Vite) — Commands Only
+## Frontend (React + Vite) — Commands Only
 
 > All commands run from the `frontend/` folder.
 

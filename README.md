@@ -4,6 +4,6 @@
 > All commands run from the `frontend/` folder.
 
 ## Setup
-- **Install deps**
+- **Install deps*
   ```bash
   npm install

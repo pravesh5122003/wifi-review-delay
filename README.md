@@ -5,6 +5,6 @@
 
 ## Setup
 - **Install deps**
-  ```bash
+  ```bash 
   npm install
  
